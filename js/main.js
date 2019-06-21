@@ -2,6 +2,7 @@
 
 var map = document.querySelector('.map');
 var mapPins = map.querySelector('.map__pins');
+var mapPinMain = map.querySelector('.map__pin--main');
 var OBJECT_COUNT = 8;
 var yLocation = {
   min: 130,
@@ -36,9 +37,6 @@ var addPins = function () {
     });
   }
 };
-addPins();
-
-map.classList.remove('map--faded');
 
 var renderPin = function (pin) {
   var pinElement = similarPinElement.cloneNode(true);
@@ -62,4 +60,27 @@ var renderPins = function () {
   mapPins.appendChild(fragment);
 };
 
-renderPins();
+var form = document.querySelector('.notice');
+var formFields = form.getElementsByTagName('fieldset');
+var fadeForm = form.querySelector('.ad-form');
+
+var disableForm = function () {
+  for (var i = 0; i < formFields.length; i++) {
+    formFields[i].setAttribute("disabled", "disabled");
+  };
+};
+disableForm();
+
+var ableForm = function () {
+  for (var i = 0; i < formFields.length; i++) {
+    formFields[i].removeAttribute("disabled", "disabled");
+  };
+};
+
+mapPinMain.addEventListener('click', function () {
+  map.classList.remove('map--faded');
+  fadeForm.classList.remove('ad-form--disabled');
+  addPins();
+  renderPins();
+  ableForm();
+});
