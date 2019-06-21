@@ -63,6 +63,15 @@ var renderPins = function () {
 var form = document.querySelector('.notice');
 var formFields = form.getElementsByTagName('fieldset');
 var fadeForm = form.querySelector('.ad-form');
+var pinCordinateLeft = mapPins.querySelector('.map__pin').style.left.replace(/[^0-9]/g, '');
+var pinCordinateTop = mapPins.querySelector('.map__pin').style.top.replace(/[^0-9]/g, '');
+var compliteCordinate = pinCordinateLeft + '.' + pinCordinateTop;
+var cordinateInput = form.querySelector('input[name=address]');
+
+var setCordinate = function () {
+  cordinateInput.setAttribute('value', compliteCordinate);
+};
+setCordinate();
 
 var disableForm = function () {
   for (var i = 0; i < formFields.length; i++) {
