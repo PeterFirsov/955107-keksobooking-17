@@ -75,15 +75,15 @@ setCordinate();
 
 var disableForm = function () {
   for (var i = 0; i < formFields.length; i++) {
-    formFields[i].setAttribute("disabled", "disabled");
-  };
+    formFields[i].setAttribute('disabled', 'disabled');
+  }
 };
 disableForm();
 
 var ableForm = function () {
   for (var i = 0; i < formFields.length; i++) {
-    formFields[i].removeAttribute("disabled", "disabled");
-  };
+    formFields[i].removeAttribute('disabled', 'disabled');
+  }
 };
 
 mapPinMain.addEventListener('click', function () {
