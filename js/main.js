@@ -75,9 +75,9 @@ var setCordinate = function () {
 };
 setCordinate();
 
-var disableForm = function (no, yes) {
+var disableForm = function (first) {
   for (var i = 0; i < formFields.length; i++) {
-    formFields[i].disabled = no || yes;
+    formFields[i].disabled = first;
   }
 };
 disableForm(yes);
