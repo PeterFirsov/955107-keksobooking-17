@@ -67,27 +67,27 @@ var pinCordinateLeft = mapPins.querySelector('.map__pin').style.left.replace(/[^
 var pinCordinateTop = mapPins.querySelector('.map__pin').style.top.replace(/[^0-9]/g, '');
 var compliteCordinate = pinCordinateLeft + '.' + pinCordinateTop;
 var cordinateInput = form.querySelector('input[name=address]');
-var able = false;
-var disable = true;
+var no = false;
+var yes = true;
 
 var setCordinate = function () {
   cordinateInput.setAttribute('value', compliteCordinate);
 };
 setCordinate();
 
-var disableForm = function (able, disable) {
+var disableForm = function (no, yes) {
   for (var i = 0; i < formFields.length; i++) {
-    formFields[i].disabled = able || disable;
+    formFields[i].disabled = no || yes;
   }
 };
-disableForm(disable);
+disableForm(yes);
 
 mapPinMain.addEventListener('click', function () {
   map.classList.remove('map--faded');
   fadeForm.classList.remove('ad-form--disabled');
   addPins();
   renderPins();
-  disableForm(able);
+  disableForm(no);
 });
 
 mapPinMain.addEventListener('mouseup', function () {
