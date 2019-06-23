@@ -67,29 +67,29 @@ var pinCordinateLeft = mapPins.querySelector('.map__pin').style.left.replace(/[^
 var pinCordinateTop = mapPins.querySelector('.map__pin').style.top.replace(/[^0-9]/g, '');
 var compliteCordinate = pinCordinateLeft + '.' + pinCordinateTop;
 var cordinateInput = form.querySelector('input[name=address]');
+var able = false;
+var disable = true;
 
 var setCordinate = function () {
   cordinateInput.setAttribute('value', compliteCordinate);
 };
 setCordinate();
 
-var disableForm = function () {
+var disableForm = function (able, disable) {
   for (var i = 0; i < formFields.length; i++) {
-    formFields[i].setAttribute('disabled', 'disabled');
+    formFields[i].disabled = able || disable;
   }
 };
-disableForm();
-
-var ableForm = function () {
-  for (var i = 0; i < formFields.length; i++) {
-    formFields[i].removeAttribute('disabled', 'disabled');
-  }
-};
+disableForm(disable);
 
 mapPinMain.addEventListener('click', function () {
   map.classList.remove('map--faded');
   fadeForm.classList.remove('ad-form--disabled');
   addPins();
   renderPins();
-  ableForm();
+  disableForm(able);
+});
+
+mapPinMain.addEventListener('mouseup', function () {
+  setCordinate();
 });
