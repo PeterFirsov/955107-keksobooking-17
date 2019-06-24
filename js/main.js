@@ -2,6 +2,7 @@
 
 var map = document.querySelector('.map');
 var mapPins = map.querySelector('.map__pins');
+var mapPinMain = map.querySelector('.map__pin--main');
 var OBJECT_COUNT = 8;
 var yLocation = {
   min: 130,
@@ -36,9 +37,6 @@ var addPins = function () {
     });
   }
 };
-addPins();
-
-map.classList.remove('map--faded');
 
 var renderPin = function (pin) {
   var pinElement = similarPinElement.cloneNode(true);
@@ -62,4 +60,36 @@ var renderPins = function () {
   mapPins.appendChild(fragment);
 };
 
-renderPins();
+var form = document.querySelector('.notice');
+var formFields = form.getElementsByTagName('fieldset');
+var fadeForm = form.querySelector('.ad-form');
+var pinCordinateLeft = mapPins.querySelector('.map__pin').style.left.replace(/[^0-9]/g, '');
+var pinCordinateTop = mapPins.querySelector('.map__pin').style.top.replace(/[^0-9]/g, '');
+var compliteCordinate = pinCordinateLeft + '.' + pinCordinateTop;
+var cordinateInput = form.querySelector('input[name=address]');
+var no = false;
+var yes = true;
+
+var setCordinate = function () {
+  cordinateInput.setAttribute('value', compliteCordinate);
+};
+setCordinate();
+
+var disableForm = function (first) {
+  for (var i = 0; i < formFields.length; i++) {
+    formFields[i].disabled = first;
+  }
+};
+disableForm(yes);
+
+mapPinMain.addEventListener('click', function () {
+  map.classList.remove('map--faded');
+  fadeForm.classList.remove('ad-form--disabled');
+  addPins();
+  renderPins();
+  disableForm(no);
+});
+
+mapPinMain.addEventListener('mouseup', function () {
+  setCordinate();
+});
