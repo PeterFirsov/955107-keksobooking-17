@@ -92,11 +92,11 @@ formType.addEventListener('change', function () {
 
 formIn.addEventListener('change', function () {
   if (formIn.value === '12:00') {
-    formOut.value === '12:00';
+    formOut.value = '12:00';
   } if (formIn.value === '13:00') {
-    formOut.value === '13:00';
+    formOut.value = '13:00';
   } if (formIn.value === '14:00') {
-    formOut.value === '14:00';
+    formOut.value = '14:00';
   }
 }, false);
 
