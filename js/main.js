@@ -74,31 +74,38 @@ var formPrice = fadeForm.querySelector('input[name=price]');
 var formIn = fadeForm.querySelector('select[name=timein]');
 var formOut = fadeForm.querySelector('select[name=timeout]');
 
-formType.addEventListener('change', function () {
-  if (formType.value === 'bungalo') {
-    formPrice.setAttribute('minlength', 0);
-    formPrice.placeholder = '0';
-  } if (formType.value === 'flat') {
-    formPrice.setAttribute('minlength', 1000);
-    formPrice.placeholder = '1000';
-  } if (formType.value === 'house') {
-    formPrice.setAttribute('minlength', 5000);
-    formPrice.placeholder = '5000';
-  } if (formType.value === 'palace') {
-    formPrice.setAttribute('minlength', 10000);
-    formPrice.placeholder = '10000';
-  }
-}, false);
+formType.addEventListener('input', function () {
+  switch (formType.value) {
+    case 'bungalo' :
+      formPrice.setAttribute('minlength', 0);
+      formPrice.placeholder = '0';
+      break;
+    case 'flat' :
+      formPrice.setAttribute('minlength', 1000);
+      formPrice.placeholder = '1000';
+      break;
+    case 'house' :
+      formPrice.setAttribute('minlength', 5000);
+      formPrice.placeholder = '5000';
+      break;
+    case 'palace' :
+      formPrice.setAttribute('minlength', 10000);
+      formPrice.placeholder = '10000';
+      break;
+}});
 
-formIn.addEventListener('change', function () {
-  if (formIn.value === '12:00') {
-    formOut.value = '12:00';
-  } if (formIn.value === '13:00') {
-    formOut.value = '13:00';
-  } if (formIn.value === '14:00') {
-    formOut.value = '14:00';
-  }
-}, false);
+formIn.addEventListener('input', function () {
+  switch (formIn.value) {
+    case '12:00' :
+      formOut.value = '12:00';
+      break;
+    case '13:00' :
+      formOut.value = '13:00';
+      break;
+    case '14:00' :
+      formOut.value = '14:00';
+      break;
+}});
 
 var setCordinate = function () {
   cordinateInput.setAttribute('value', compliteCordinate);
