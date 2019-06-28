@@ -91,7 +91,8 @@ formType.addEventListener('input', function () {
     case 'palace' :
       formPrice.setAttribute('minlength', 10000);
       formPrice.placeholder = '10000';
-      break;} 
+      break; 
+    } 
 });
 
 formIn.addEventListener('input', function () {
@@ -104,7 +105,8 @@ formIn.addEventListener('input', function () {
       break;
     case '14:00' :
       formOut.value = '14:00';
-      break;} 
+      break;
+    } 
 });
 
 var setCordinate = function () {
