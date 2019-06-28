@@ -63,12 +63,51 @@ var renderPins = function () {
 var form = document.querySelector('.notice');
 var formFields = form.getElementsByTagName('fieldset');
 var fadeForm = form.querySelector('.ad-form');
-var pinCordinateLeft = mapPins.querySelector('.map__pin').style.left.replace(/[^0-9]/g, '');
-var pinCordinateTop = mapPins.querySelector('.map__pin').style.top.replace(/[^0-9]/g, '');
-var compliteCordinate = pinCordinateLeft + '.' + pinCordinateTop;
+var pinCordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
+var pinCordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
+var compliteCordinate = pinCordinateLeft + ', ' + pinCordinateTop;
 var cordinateInput = form.querySelector('input[name=address]');
 var no = false;
 var yes = true;
+var formType = fadeForm.querySelector('select[name=type]');
+var formPrice = fadeForm.querySelector('input[name=price]');
+var formIn = fadeForm.querySelector('select[name=timein]');
+var formOut = fadeForm.querySelector('select[name=timeout]');
+
+formType.addEventListener('input', function () {
+  switch (formType.value) {
+    case 'bungalo' :
+      formPrice.setAttribute('minlength', 0);
+      formPrice.placeholder = '0';
+      break;
+    case 'flat' :
+      formPrice.setAttribute('minlength', 1000);
+      formPrice.placeholder = '1000';
+      break;
+    case 'house' :
+      formPrice.setAttribute('minlength', 5000);
+      formPrice.placeholder = '5000';
+      break;
+    case 'palace' :
+      formPrice.setAttribute('minlength', 10000);
+      formPrice.placeholder = '10000';
+      break;
+  }
+});
+
+formIn.addEventListener('input', function () {
+  switch (formIn.value) {
+    case '12:00' :
+      formOut.value = '12:00';
+      break;
+    case '13:00' :
+      formOut.value = '13:00';
+      break;
+    case '14:00' :
+      formOut.value = '14:00';
+      break;
+  }
+});
 
 var setCordinate = function () {
   cordinateInput.setAttribute('value', compliteCordinate);
