@@ -112,7 +112,7 @@ var setCordinate = function (xCord, yCord) {
   var compliteCordinate = xCord + ', ' + yCord;
   cordinateInput.setAttribute('value', compliteCordinate);
 };
-setCordinate(pinCordinateLeft +31, pinCordinateTop + 84);
+setCordinate(pinCordinateLeft + 31, pinCordinateTop + 84);
 
 var disableForm = function (first) {
   for (var i = 0; i < formFields.length; i++) {
@@ -121,8 +121,7 @@ var disableForm = function (first) {
 };
 disableForm(yes);
 
-
-//для перемещения
+// для перемещения
 
 var setEvent = function (toggle, element) {
   toggle.addEventListener('mousedown', function (evt) {
