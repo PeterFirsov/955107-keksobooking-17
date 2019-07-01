@@ -65,7 +65,6 @@ var formFields = form.getElementsByTagName('fieldset');
 var fadeForm = form.querySelector('.ad-form');
 var pinCordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
 var pinCordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
-var compliteCordinate = pinCordinateLeft + ', ' + pinCordinateTop;
 var cordinateInput = form.querySelector('input[name=address]');
 var no = false;
 var yes = true;
@@ -109,10 +108,11 @@ formIn.addEventListener('input', function () {
   }
 });
 
-var setCordinate = function () {
+var setCordinate = function (xCord, yCord) {
+  var compliteCordinate = xCord + ', ' + yCord;
   cordinateInput.setAttribute('value', compliteCordinate);
 };
-setCordinate();
+setCordinate(pinCordinateLeft +31, pinCordinateTop + 84);
 
 var disableForm = function (first) {
   for (var i = 0; i < formFields.length; i++) {
@@ -121,14 +121,64 @@ var disableForm = function (first) {
 };
 disableForm(yes);
 
-mapPinMain.addEventListener('click', function () {
-  map.classList.remove('map--faded');
-  fadeForm.classList.remove('ad-form--disabled');
-  addPins();
-  renderPins();
-  disableForm(no);
-});
 
-mapPinMain.addEventListener('mouseup', function () {
-  setCordinate();
-});
+//для перемещения
+
+var setEvent = function (toggle, element) {
+  toggle.addEventListener('mousedown', function (evt) {
+    evt.preventDefault();
+    map.classList.remove('map--faded');
+    fadeForm.classList.remove('ad-form--disabled');
+    disableForm(no);
+
+    var startCoords = {
+      x: evt.clientX,
+      y: evt.clientY
+    };
+
+    var dragged = false;
+
+    var onMouseMove = function (moveEvt) {
+      moveEvt.preventDefault();
+      dragged = true;
+
+      var shift = {
+        x: startCoords.x - moveEvt.clientX,
+        y: startCoords.y - moveEvt.clientY
+      };
+
+      startCoords = {
+        x: moveEvt.clientX,
+        y: moveEvt.clientY
+      };
+
+      element.style.top = (element.offsetTop - shift.y) + 'px';
+      element.style.left = (element.offsetLeft - shift.x) + 'px';
+
+      setCordinate(parseInt(element.style.left, 10) + 31, parseInt(element.style.top, 10) + 84);
+    };
+
+    var onMouseUp = function (upEvt) {
+      upEvt.preventDefault();
+      addPins();
+      renderPins();
+
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+
+      if (dragged) {
+        // eslint-disable-next-line no-shadow
+        var onClickPreventDefault = function (evt) {
+          evt.preventDefault();
+          toggle.removeEventListener('click', onClickPreventDefault);
+        };
+        toggle.addEventListener('click', onClickPreventDefault);
+      }
+
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+};
+setEvent(mapPinMain, mapPinMain);
