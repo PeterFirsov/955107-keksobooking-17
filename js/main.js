@@ -151,8 +151,12 @@ var setEvent = function (toggle, element) {
         y: moveEvt.clientY
       };
 
-      element.style.top = (element.offsetTop - shift.y) + 'px';
-      element.style.left = (element.offsetLeft - shift.x) + 'px';
+      if (mapPins.offsetWidth - 31 > element.offsetLeft - shift.x && mapPins.offsetHeight - 84 > element.offsetTop - shift.y) {
+        if (element.offsetLeft - shift.x > mapPins.offsetLeft - 31 && element.offsetTop - shift.y > mapPins.offsetTop) {
+          element.style.top = (element.offsetTop - shift.y) + 'px';
+          element.style.left = (element.offsetLeft - shift.x) + 'px';
+        }
+      }
 
       setCordinate(parseInt(element.style.left, 10) + 31, parseInt(element.style.top, 10) + 84);
     };
