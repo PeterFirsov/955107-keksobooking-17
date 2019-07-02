@@ -108,11 +108,14 @@ formIn.addEventListener('input', function () {
   }
 });
 
+var pinHalfWidth = 31;
+var pinFullHeight = 84;
+
 var setCordinate = function (xCord, yCord) {
   var compliteCordinate = xCord + ', ' + yCord;
   cordinateInput.setAttribute('value', compliteCordinate);
 };
-setCordinate(pinCordinateLeft + 31, pinCordinateTop + 84);
+setCordinate(pinCordinateLeft + pinHalfWidth, pinCordinateTop + pinFullHeight);
 
 var disableForm = function (first) {
   for (var i = 0; i < formFields.length; i++) {
@@ -151,14 +154,14 @@ var setEvent = function (toggle, element) {
         y: moveEvt.clientY
       };
 
-      if (mapPins.offsetWidth - 31 > element.offsetLeft - shift.x && mapPins.offsetHeight - 84 > element.offsetTop - shift.y) {
-        if (element.offsetLeft - shift.x > mapPins.offsetLeft - 31 && element.offsetTop - shift.y > mapPins.offsetTop) {
+      if (mapPins.offsetWidth - pinHalfWidth > element.offsetLeft - shift.x && mapPins.offsetHeight - pinFullHeight > element.offsetTop - shift.y) {
+        if (element.offsetLeft - shift.x > mapPins.offsetLeft - pinHalfWidth && element.offsetTop - shift.y > mapPins.offsetTop) {
           element.style.top = (element.offsetTop - shift.y) + 'px';
           element.style.left = (element.offsetLeft - shift.x) + 'px';
         }
       }
 
-      setCordinate(parseInt(element.style.left, 10) + 31, parseInt(element.style.top, 10) + 84);
+      setCordinate(parseInt(element.style.left, 10) + 31, parseInt(element.style.top, 10) + pinFullHeight);
     };
 
     var onMouseUp = function (upEvt) {
