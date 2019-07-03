@@ -21,6 +21,8 @@ var yLocation = {
 
 var objects = [];
 
+var type = ['palace', 'flat', 'house', 'bungalo'];
+
 var types = {
   palace: {
     ru: 'Дворец', min: 10000
