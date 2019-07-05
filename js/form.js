@@ -15,13 +15,9 @@
       ru: 'Бунгало', min: 0
     }
   };
-  var map = document.querySelector('.map');
-  var mapPins = map.querySelector('.map__pins');
+
   var form = document.querySelector('.notice');
   var fadeForm = form.querySelector('.ad-form');
-  var pinCordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
-  var pinCordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
-  var cordinateInput = form.querySelector('input[name=address]');
   var formType = fadeForm.querySelector('select[name=type]');
   var formPrice = fadeForm.querySelector('input[name=price]');
   var formIn = fadeForm.querySelector('select[name=timein]');

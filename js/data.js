@@ -17,7 +17,7 @@
 
   var addPins = function () {
     for (var i = 0; i < OBJECT_COUNT; i++) {
-      objects.push({
+      window.objects.push({
         author: {
           avatar: 'img/avatars/user0' + (i + 1) + '.png'
         },

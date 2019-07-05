@@ -30,7 +30,7 @@
       fragment.appendChild(renderPin(window.objects[i]));
     }
 
-  mapPins.appendChild(fragment);
+    mapPins.appendChild(fragment);
   };
 
 })();
