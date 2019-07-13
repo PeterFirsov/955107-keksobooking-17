@@ -18,7 +18,7 @@
     pinElement.style.left = (pin.location.x - PIN_OFFSET.x) + 'px';
     pinElement.style.top = (pin.location.y - PIN_OFFSET.y) + 'px';
     image.src = pin.author.avatar;
-    image.alt = 'заголовок объявления';
+    image.alt = pin.offer.title;
 
     return pinElement;
   };
