@@ -80,7 +80,7 @@
 
   var onMainPinMouseUp = function () {
     activateMap();
-    window.pin.renderPins();
+    window.pin.renderPins(window.filters);
 
     mapPinMain.removeEventListener('mouseup', onMainPinMouseUp);
   };
