@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  
+
   var OBJECT_LIMIT = 5;
 
   var objects = [];
@@ -12,8 +12,10 @@
     filters = data.slice(0, OBJECT_LIMIT);
   };
 
-  window.backend.load(onSuccess, window.backend.errorHandler);
+  
 
+  window.backend.load(onSuccess, window.backend.errorHandler);
+  
   window.massiv = {
     data: function () {
       return objects;
