@@ -12,8 +12,6 @@
     filters = data.slice(0, OBJECT_LIMIT);
   };
 
-  
-
   window.backend.load(onSuccess, window.backend.errorHandler);
   
   window.massiv = {
