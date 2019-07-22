@@ -23,12 +23,6 @@
     return pinElement;
   };
 
-  var clearPins = function () {
-    mapPins.innerHTML = '';
-  };
-
-  window.clearPins = clearPins;
-
   window.pin.renderPins = function (array) {
     var fragment = document.createDocumentFragment();
 
