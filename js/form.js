@@ -26,7 +26,6 @@
   formType.addEventListener('change', function (evt) {
     formPrice.min = types[evt.target.value].min;
     formPrice.placeholder = types[evt.target.value].min;
-    window.filterIt(evt);
   });
 
   formIn.addEventListener('change', function () {

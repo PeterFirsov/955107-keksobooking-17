@@ -15,9 +15,11 @@
 
     window.clearPins = clearPins;
 
-    var pinTypes = window.objects.filter(function (pin) {
+    var OBJECT_LIMIT = 5;
+
+    var pinTypes = window.massiv.data().filter(function (pin) {
       return pin.offer.type === evt.target.value;
-    }).slice(0, 5);
+    }).slice(0, OBJECT_LIMIT);
     window.clearPins();
     window.pin.renderPins(pinTypes);
 

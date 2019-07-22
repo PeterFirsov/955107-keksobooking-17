@@ -3,7 +3,6 @@
 (function () {
   var LOAD_URL = 'https://js.dump.academy/keksobooking/data';
 
-
   var request = function (onSuccess, onError) {
     var xhr = new XMLHttpRequest();
     var goodAnswer = 200;
