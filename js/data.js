@@ -13,7 +13,7 @@
   };
 
   window.backend.load(onSuccess, window.backend.errorHandler);
-  
+
   window.massiv = {
     data: function () {
       return objects;
@@ -21,6 +21,6 @@
     firstData: function () {
       return filters;
     }
-  }
+  };
 
 })();
