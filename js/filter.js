@@ -6,7 +6,7 @@
 
     var pinTypes = window.objects.filter(function (pin) {
       return pin.offer.type === evt.target.value;
-    }).slice(0,5);
+    }).slice(0, 5);
     window.clearPins();
     window.pin.renderPins(pinTypes);
 
