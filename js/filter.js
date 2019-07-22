@@ -18,6 +18,9 @@
     var OBJECT_LIMIT = 5;
 
     var pinTypes = window.massiv.data().filter(function (pin) {
+      if (evt.target.value === 'any') {
+        return pin;
+      }
       return pin.offer.type === evt.target.value;
     }).slice(0, OBJECT_LIMIT);
     window.clearPins();
