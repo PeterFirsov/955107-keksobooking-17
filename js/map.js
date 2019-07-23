@@ -14,6 +14,13 @@
   var formFields = form.getElementsByTagName('fieldset');
   var cordinateInput = form.querySelector('input[name=address]');
   var fadeForm = form.querySelector('.ad-form');
+  var mapFilter = map.querySelector('.map__filters');
+  var filterType = mapFilter.querySelector('select[name=housing-type]');
+
+  filterType.addEventListener('change', function (evt) {
+    window.filterIt(evt);
+  });
+
 
   var setCordinate = function (xCord, yCord) {
     var compliteCordinate = xCord + ', ' + yCord;
@@ -80,7 +87,7 @@
 
   var onMainPinMouseUp = function () {
     activateMap();
-    window.pin.renderPins();
+    window.pin.renderPins(window.massiv.firstData());
 
     mapPinMain.removeEventListener('mouseup', onMainPinMouseUp);
   };

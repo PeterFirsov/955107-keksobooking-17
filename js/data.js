@@ -2,15 +2,25 @@
 
 (function () {
 
-  var OBJECT_COUNT = 8;
+  var OBJECT_LIMIT = 5;
 
-  window.objects = [];
+  var objects = [];
+  var filters = [];
 
   var onSuccess = function (data) {
-    window.objects = data.slice(0, OBJECT_COUNT);
-
+    objects = data.slice();
+    filters = data.slice(0, OBJECT_LIMIT);
   };
 
   window.backend.load(onSuccess, window.backend.errorHandler);
+
+  window.massiv = {
+    data: function () {
+      return objects;
+    },
+    firstData: function () {
+      return filters;
+    }
+  };
 
 })();

@@ -23,11 +23,11 @@
     return pinElement;
   };
 
-  window.pin.renderPins = function () {
+  window.pin.renderPins = function (array) {
     var fragment = document.createDocumentFragment();
 
-    for (var i = 0; i < window.objects.length; i++) {
-      fragment.appendChild(renderPin(window.objects[i]));
+    for (var i = 0; i < array.length; i++) {
+      fragment.appendChild(renderPin(array[i]));
     }
 
     mapPins.appendChild(fragment);
