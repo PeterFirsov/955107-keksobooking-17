@@ -21,7 +21,7 @@
     var features = cardElement.querySelector('.popup__features');
     var items = features.querySelectorAll('.popup__feature');
     var description = cardElement.querySelector('.popup__description');
-    /*var photo = cardElement.querySelector('.popup__photos');*/
+    /* var photo = cardElement.querySelector('.popup__photos'); */
 
     avatar.src = card.author.avatar;
     avatar.alt = card.offer.title;
