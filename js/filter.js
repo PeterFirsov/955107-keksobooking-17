@@ -1,6 +1,8 @@
 'use strict';
 
+
 (function () {
+  
 
   var filterIt = function (evt) {
     var map = document.querySelector('.map');
