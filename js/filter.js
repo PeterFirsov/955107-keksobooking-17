@@ -3,7 +3,6 @@
 
 (function () {
   
-
   var filterIt = function (evt) {
     var map = document.querySelector('.map');
     var mapPins = map.querySelector('.map__pins');

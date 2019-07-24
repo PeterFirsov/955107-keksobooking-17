@@ -21,7 +21,7 @@
     var features = cardElement.querySelector('.popup__features');
     var items = features.querySelectorAll('.popup__feature');
     var description = cardElement.querySelector('.popup__description');
-    var photo = cardElement.querySelector('.popup__photos');
+    /*var photo = cardElement.querySelector('.popup__photos');*/
 
     avatar.src = card.author.avatar;
     avatar.alt = card.offer.title;
@@ -44,7 +44,7 @@
         case 'palace':
           type.textContent = 'Дворец';
           break;
-      };
+      }
     };
     addType();
 
@@ -64,13 +64,13 @@
       }
       if (card.offer.guests > 1) {
         guest = 'гостей';
-      };
+      }
 
       capacity.textContent = card.offer.rooms + ' ' + room + ' для ' + card.offer.guests + ' ' + guest;
 
       if (card.offer.rooms === 0 || card.offer.guests === 0) {
         capacity.textContent = 'не для гостей';
-      };
+      }
 
       time.textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
     };
@@ -90,7 +90,7 @@
         featureElement.classList.add('popup__feature');
         featureElement.classList.add('popup__feature--' + card.offer.features[i]);
         features.appendChild(featureElement);
-      };
+      }
     };
     addFeatures();
 
