@@ -7,7 +7,7 @@
     x: 20,
     y: 40
   };
-  
+
   var similarPinElement = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');

@@ -32,7 +32,6 @@
     address.textContent = card.offer.address;
     price.textContent = card.offer.price + '/ночь';
 
-  
     window.addEventListener('keydown', function (evt) {
       if (evt.keyCode === ESC_KEYCODE) {
         cardElement.remove();
