@@ -53,18 +53,16 @@
     var addCapacity = function () {
 
       var numDecline = function (num, nominative, genitiveSingular, genitivePlural) {
-        if (num > 10 && (Math.round((num % 100) / 10)) == 1) {
+        if (num > 10 && (Math.round((num % 100) / 10)) === 1) {
           return genitivePlural;
         } else {
           switch (num % 10) {
             case 1:
               return nominative;
-              break;
             case 2:
             case 3:
             case 4:
               return genitiveSingular;
-              break;
             case 5:
             case 6:
             case 7:
@@ -72,19 +70,17 @@
             case 9:
             case 0:
               return genitivePlural;
-              break;
           }
         }
       };
 
       var numDeclineGuest = function (num, nominative, genitiveSingular) {
-        if (num > 10 && (Math.round((num % 100) / 10)) == 1) {
+        if (num > 10 && (Math.round((num % 100) / 10)) === 1) {
           return nominative;
         } else {
           switch (num % 10) {
             case 1:
               return nominative;
-              break;
             case 2:
             case 3:
             case 4:
@@ -95,7 +91,6 @@
             case 9:
             case 0:
               return genitiveSingular;
-              break;
           }
         }
       };
@@ -137,7 +132,7 @@
       var imageElement = photo.cloneNode(true);
       imageElement.src = card.offer.photos[i];
       photoAlbum.appendChild(imageElement);
-    };
+    }
 
     return cardElement;
   };
@@ -145,7 +140,7 @@
   window.card.renderCards = function (array) {
     var fragment = document.createDocumentFragment();
 
-    fragment.appendChild(renderCard(array[3]));
+    fragment.appendChild(renderCard(array[0]));
 
     filtersContainer.appendChild(fragment);
   };
