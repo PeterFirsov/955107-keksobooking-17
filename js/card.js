@@ -21,7 +21,8 @@
     var features = cardElement.querySelector('.popup__features');
     var items = features.querySelectorAll('.popup__feature');
     var description = cardElement.querySelector('.popup__description');
-    /* var photo = cardElement.querySelector('.popup__photos'); */
+    var photoAlbum = cardElement.querySelector('.popup__photos');
+    var photo = photoAlbum.querySelector('.popup__photo');
 
     avatar.src = card.author.avatar;
     avatar.alt = card.offer.title;
@@ -50,31 +51,65 @@
 
 
     var addCapacity = function () {
-      if (card.offer.rooms === 1) {
-        var room = 'комната';
-      }
-      if (card.offer.rooms > 1 && card.offer.rooms < 5) {
-        room = 'комнаты';
-      }
-      if (card.offer.rooms > 5) {
-        room = 'комнат';
-      }
-      if (card.offer.guests === 1) {
-        var guest = 'гостя';
-      }
-      if (card.offer.guests > 1) {
-        guest = 'гостей';
-      }
 
-      capacity.textContent = card.offer.rooms + ' ' + room + ' для ' + card.offer.guests + ' ' + guest;
+      var numDecline = function (num, nominative, genitiveSingular, genitivePlural) {
+        if (num > 10 && (Math.round((num % 100) / 10)) == 1) {
+          return genitivePlural;
+        } else {
+          switch (num % 10) {
+            case 1:
+              return nominative;
+              break;
+            case 2:
+            case 3:
+            case 4:
+              return genitiveSingular;
+              break;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 0:
+              return genitivePlural;
+              break;
+          }
+        }
+      };
+
+      var numDeclineGuest = function (num, nominative, genitiveSingular) {
+        if (num > 10 && (Math.round((num % 100) / 10)) == 1) {
+          return nominative;
+        } else {
+          switch (num % 10) {
+            case 1:
+              return nominative;
+              break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 0:
+              return genitiveSingular;
+              break;
+          }
+        }
+      };
+
+      capacity.textContent = card.offer.rooms + ' ' + numDecline(card.offer.rooms, 'комната', 'комнаты', 'комнат') + ' для ' + card.offer.guests + ' ' + numDeclineGuest(card.offer.guests, 'гостя', 'гостей');
 
       if (card.offer.rooms === 0 || card.offer.guests === 0) {
         capacity.textContent = 'не для гостей';
       }
 
-      time.textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
     };
     addCapacity();
+
+    time.textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
 
     var addFeatures = function () {
       var clearList = function () {
@@ -96,12 +131,13 @@
 
     description.textContent = card.offer.description;
 
-    /* for (var i = 0; i < card.offer.photos.length; i++) {
-        var featureElement = document.createElement('img');
-        featureElement.classList.add('popup__photo');
-        featureElement.src = card.offer.photos[i];
-        photo.appendChild(featureElement);
-    }; */
+    photo.src = card.offer.photos[0];
+
+    for (var i = 1; i < card.offer.photos.length; i++) {
+      var imageElement = photo.cloneNode(true);
+      imageElement.src = card.offer.photos[i];
+      photoAlbum.appendChild(imageElement);
+    };
 
     return cardElement;
   };
@@ -109,7 +145,7 @@
   window.card.renderCards = function (array) {
     var fragment = document.createDocumentFragment();
 
-    fragment.appendChild(renderCard(array[1]));
+    fragment.appendChild(renderCard(array[3]));
 
     filtersContainer.appendChild(fragment);
   };
