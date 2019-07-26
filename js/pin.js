@@ -7,6 +7,7 @@
     x: 20,
     y: 40
   };
+  var ESC_KEYCODE = 27;
   var similarPinElement = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');
@@ -22,13 +23,13 @@
       var close = popup.querySelector('.popup__close');
 
       window.addEventListener('keydown', function (evt) {
-        if (evt.keyCode === 27) {
-          popup.remove();
+        if (evt.keyCode === ESC_KEYCODE) {
+          window.util(popup);
           window.removeEventListener('keydown', function () {});
         }
       });
       close.addEventListener('click', function () {
-        popup.remove();
+        window.util(popup);
         close.removeEventListener('click', function () {});
       });
     });

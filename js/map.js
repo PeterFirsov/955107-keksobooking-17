@@ -87,8 +87,7 @@
 
   var onMainPinMouseUp = function () {
     activateMap();
-    window.pin.renderPins(window.massiv.firstData()); 
-
+    window.pin.renderPins(window.massiv.firstData());
     mapPinMain.removeEventListener('mouseup', onMainPinMouseUp);
   };
 
