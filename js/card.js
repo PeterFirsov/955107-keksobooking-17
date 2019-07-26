@@ -75,29 +75,7 @@
         return num;
       };
 
-      var numDeclineGuest = function (num, nominative, genitiveSingular) {
-        if (num > 10 && (Math.round((num % 100) / 10)) === 1) {
-          return nominative;
-        } else {
-          switch (num % 10) {
-            case 1:
-              return nominative;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 0:
-              return genitiveSingular;
-          }
-        }
-        return num;
-      };
-
-      capacity.textContent = card.offer.rooms + ' ' + numDecline(card.offer.rooms, 'комната', 'комнаты', 'комнат') + ' для ' + card.offer.guests + ' ' + numDeclineGuest(card.offer.guests, 'гостя', 'гостей');
+      capacity.textContent = card.offer.rooms + ' ' + numDecline(card.offer.rooms, 'комната', 'комнаты', 'комнат') + ' для ' + card.offer.guests + ' ' + numDecline(card.offer.guests, 'гостя', 'гостей', 'гостей');
 
       if (card.offer.rooms === 0 || card.offer.guests === 0) {
         capacity.textContent = 'не для гостей';
@@ -142,7 +120,7 @@
   window.card.renderCards = function (array) {
     var fragment = document.createDocumentFragment();
 
-    fragment.appendChild(renderCard(array[0]));
+    fragment.appendChild(renderCard(array));
 
     filtersContainer.appendChild(fragment);
   };

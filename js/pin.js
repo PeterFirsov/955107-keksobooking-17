@@ -11,9 +11,27 @@
     .content
     .querySelector('.map__pin');
 
-  var renderPin = function (pin) {
+  var renderPin = function (pin, data) {
     var pinElement = similarPinElement.cloneNode(true);
     var image = pinElement.querySelector('img');
+
+    pinElement.addEventListener('click', function () {
+      window.card.renderCards(data);
+
+      var popup = document.querySelector('.popup');
+      var close = popup.querySelector('.popup__close');
+
+      window.addEventListener('keydown', function (evt) {
+        if (evt.keyCode === 27) {
+          popup.remove();
+          window.removeEventListener('keydown', function () {});
+        }
+      });
+      close.addEventListener('click', function () {
+        popup.remove();
+        close.removeEventListener('click', function () {});
+      });
+    });
 
     pinElement.style.left = (pin.location.x - PIN_OFFSET.x) + 'px';
     pinElement.style.top = (pin.location.y - PIN_OFFSET.y) + 'px';
@@ -27,7 +45,7 @@
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < array.length; i++) {
-      fragment.appendChild(renderPin(array[i]));
+      fragment.appendChild(renderPin(array[i], window.massiv.firstData()[i]));
     }
 
     mapPins.appendChild(fragment);
