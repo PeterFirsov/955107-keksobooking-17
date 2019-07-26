@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var ESC_KEYCODE = 27;
   var map = document.querySelector('.map');
 
   var filtersContainer = map.querySelector('.map__filters-container');
@@ -23,12 +24,25 @@
     var description = cardElement.querySelector('.popup__description');
     var photoAlbum = cardElement.querySelector('.popup__photos');
     var photo = photoAlbum.querySelector('.popup__photo');
+    var close = cardElement.querySelector('.popup__close');
 
     avatar.src = card.author.avatar;
     avatar.alt = card.offer.title;
     title.textContent = card.offer.title;
     address.textContent = card.offer.address;
     price.textContent = card.offer.price + '/ночь';
+
+  
+    window.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ESC_KEYCODE) {
+        cardElement.remove();
+        window.removeEventListener('keydown', function () {});
+      }
+    });
+    close.addEventListener('click', function () {
+      cardElement.remove();
+      close.removeEventListener('click', function () {});
+    });
 
     var addType = function () {
       type.textContent = card.offer.type;
