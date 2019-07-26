@@ -72,6 +72,7 @@
               return genitivePlural;
           }
         }
+        return num;
       };
 
       var numDeclineGuest = function (num, nominative, genitiveSingular) {
@@ -93,6 +94,7 @@
               return genitiveSingular;
           }
         }
+        return num;
       };
 
       capacity.textContent = card.offer.rooms + ' ' + numDecline(card.offer.rooms, 'комната', 'комнаты', 'комнат') + ' для ' + card.offer.guests + ' ' + numDeclineGuest(card.offer.guests, 'гостя', 'гостей');
