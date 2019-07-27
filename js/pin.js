@@ -18,7 +18,7 @@
 
     pinElement.addEventListener('click', function () {
       window.card.renderCards(pin);
-
+      image.classList.add('map__pin--active');
     });
 
     pinElement.style.left = (pin.location.x - PIN_OFFSET.x) + 'px';
