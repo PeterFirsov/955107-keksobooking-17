@@ -88,8 +88,6 @@
   var onMainPinMouseUp = function () {
     activateMap();
     window.pin.renderPins(window.massiv.firstData());
-    window.card.renderCards(window.massiv.firstData()); // просто чтобы отобразить карточку
-
     mapPinMain.removeEventListener('mouseup', onMainPinMouseUp);
   };
 

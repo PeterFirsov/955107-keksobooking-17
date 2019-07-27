@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var ESC_KEYCODE = 27;
   var map = document.querySelector('.map');
 
   var filtersContainer = map.querySelector('.map__filters-container');
@@ -23,12 +24,24 @@
     var description = cardElement.querySelector('.popup__description');
     var photoAlbum = cardElement.querySelector('.popup__photos');
     var photo = photoAlbum.querySelector('.popup__photo');
+    var close = cardElement.querySelector('.popup__close');
 
     avatar.src = card.author.avatar;
     avatar.alt = card.offer.title;
     title.textContent = card.offer.title;
     address.textContent = card.offer.address;
     price.textContent = card.offer.price + '/ночь';
+
+    window.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ESC_KEYCODE) {
+        cardElement.remove();
+        window.removeEventListener('keydown', function () {});
+      }
+    });
+    close.addEventListener('click', function () {
+      cardElement.remove();
+      close.removeEventListener('click', function () {});
+    });
 
     var addType = function () {
       type.textContent = card.offer.type;
@@ -75,29 +88,7 @@
         return num;
       };
 
-      var numDeclineGuest = function (num, nominative, genitiveSingular) {
-        if (num > 10 && (Math.round((num % 100) / 10)) === 1) {
-          return nominative;
-        } else {
-          switch (num % 10) {
-            case 1:
-              return nominative;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 0:
-              return genitiveSingular;
-          }
-        }
-        return num;
-      };
-
-      capacity.textContent = card.offer.rooms + ' ' + numDecline(card.offer.rooms, 'комната', 'комнаты', 'комнат') + ' для ' + card.offer.guests + ' ' + numDeclineGuest(card.offer.guests, 'гостя', 'гостей');
+      capacity.textContent = card.offer.rooms + ' ' + numDecline(card.offer.rooms, 'комната', 'комнаты', 'комнат') + ' для ' + card.offer.guests + ' ' + numDecline(card.offer.guests, 'гостя', 'гостей', 'гостей');
 
       if (card.offer.rooms === 0 || card.offer.guests === 0) {
         capacity.textContent = 'не для гостей';
@@ -142,7 +133,7 @@
   window.card.renderCards = function (array) {
     var fragment = document.createDocumentFragment();
 
-    fragment.appendChild(renderCard(array[0]));
+    fragment.appendChild(renderCard(array));
 
     filtersContainer.appendChild(fragment);
   };

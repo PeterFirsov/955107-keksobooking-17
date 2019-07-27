@@ -7,6 +7,7 @@
     x: 20,
     y: 40
   };
+
   var similarPinElement = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');
@@ -14,6 +15,11 @@
   var renderPin = function (pin) {
     var pinElement = similarPinElement.cloneNode(true);
     var image = pinElement.querySelector('img');
+
+    pinElement.addEventListener('click', function () {
+      window.card.renderCards(pin);
+      image.classList.add('map__pin--active');
+    });
 
     pinElement.style.left = (pin.location.x - PIN_OFFSET.x) + 'px';
     pinElement.style.top = (pin.location.y - PIN_OFFSET.y) + 'px';
