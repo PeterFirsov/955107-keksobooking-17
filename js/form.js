@@ -32,8 +32,8 @@
     }
   };
 
-  var attributeChange = function () {
-    switch (formRoom.value || target.value) {
+  var attributeChange = function (evt) {
+    switch (formRoom.value || evt.target.value) {
       case '1':
         capacityOptions[0].setAttribute('disabled', 'disabled');
         capacityOptions[1].setAttribute('disabled', 'disabled');
