@@ -10,7 +10,7 @@
     },
     house: {
       ru: 'Дом', min: 5000
-    },
+    }, 
     bungalo: {
       ru: 'Бунгало', min: 0
     }
@@ -22,6 +22,39 @@
   var formPrice = fadeForm.querySelector('input[name=price]');
   var formIn = fadeForm.querySelector('select[name=timein]');
   var formOut = fadeForm.querySelector('select[name=timeout]');
+  var formRoom = fadeForm.querySelector('select[name=rooms]');
+  var formCapacity = fadeForm.querySelector('select[name=capacity]');
+  var capacityOptions = formCapacity.options;
+
+  var removeAttribute = function () {
+    for (var i = 0; i < capacityOptions.length; i++) {
+      capacityOptions[i].removeAttribute('disabled');
+    }
+  };
+
+  var attributeChange = function () {
+    switch(formRoom.value || evt.target.value) {
+      case '1':
+        capacityOptions[0].setAttribute('disabled', 'disabled');
+        capacityOptions[1].setAttribute('disabled', 'disabled');
+        formCapacity.value = '1';
+        alert('Количество мест именилось на 1');
+        break;
+      case '2':
+        capacityOptions[0].setAttribute('disabled', 'disabled');
+        formCapacity.value = '2';
+        alert('Количество мест именилось на 2');
+        break;
+    }
+  };
+
+  attributeChange();
+  
+  formRoom.addEventListener('change', function (evt) {
+    removeAttribute();
+    attributeChange(evt);
+  });
+  
 
   formType.addEventListener('change', function (evt) {
     formPrice.min = types[evt.target.value].min;
