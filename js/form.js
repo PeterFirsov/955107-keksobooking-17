@@ -67,4 +67,14 @@
     formIn.value = formOut.value;
   });
 
+  fadeForm.addEventListener('submit', function (evt) {
+    window.backend.upload(new FormData(fadeForm), function (response) {
+      fadeForm.reset()
+      window.map.disable(true);
+      window.clearPins();
+      window.card.clearPopup();
+    });
+    evt.preventDefault();
+  });
+
 })();
