@@ -40,7 +40,7 @@
     var error = node.cloneNode(true);
     main.appendChild(error);
     var massage = document.querySelector('.error');
-    var errorButton = massage.querySelector('.error__button')
+    var errorButton = massage.querySelector('.error__button');
     errorButton.addEventListener('click', function (evt) {
       window.util.isEscEvent(evt, clearPage);
     });

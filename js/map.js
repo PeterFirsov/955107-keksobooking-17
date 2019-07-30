@@ -19,7 +19,7 @@
   var mainPinStart = {
     x: mapPinMain.style.left,
     y: mapPinMain.style.top
-  }
+  };
 
   filterType.addEventListener('change', function (evt) {
     window.filter.filterIt(evt);

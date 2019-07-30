@@ -72,7 +72,7 @@
   });
 
   fadeForm.addEventListener('submit', function (evt) {
-    window.backend.load(function (response) {
+    window.backend.load(function () {
       fadeForm.reset();
       window.map.disable(true);
       window.filter.clearPins();
