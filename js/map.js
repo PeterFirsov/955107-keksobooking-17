@@ -22,7 +22,7 @@
   }
 
   filterType.addEventListener('change', function (evt) {
-    window.filterIt(evt);
+    window.filter.filterIt(evt);
   });
 
 
@@ -99,7 +99,6 @@
   var onMainPinMouseUp = function () {
     activateMap();
     window.pin.renderPins(window.massiv.firstData());
-    mapPinMain.removeEventListener('mouseup', onMainPinMouseUp);
   };
 
   mapPinMain.addEventListener('mouseup', onMainPinMouseUp);

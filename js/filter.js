@@ -1,10 +1,8 @@
 'use strict';
 
-
 (function () {
-  var map = document.querySelector('.map');
+    var map = document.querySelector('.map');
     var mapPins = map.querySelector('.map__pins');
-
 
     var clearPins = function () {
     var offers = mapPins.querySelectorAll('.map__pin:not(.map__pin--main)');
@@ -12,9 +10,9 @@
         offer.remove();
       });
     };
-    window.clearPins = clearPins;
-  var filterIt = function (evt) {
 
+
+  var filterIt = function (evt) {
 
     var OBJECT_LIMIT = 5;
 
@@ -29,6 +27,9 @@
 
   };
 
-  window.filterIt = filterIt;
+  window.filter = {
+    filterIt: filterIt,
+    clearPins: clearPins
+  };
 
 })();

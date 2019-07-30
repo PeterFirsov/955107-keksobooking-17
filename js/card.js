@@ -140,10 +140,10 @@
 
   var clearPopup = function () {
     var popups = filtersContainer.querySelectorAll('.map__card');
-      popups.forEach(function (popup) {
-        popup.remove();
-      });
-    };
+    popups.forEach(function (popup) {
+      popup.remove();
+    });
+  };
 
   window.card.clearPopup = clearPopup;
 

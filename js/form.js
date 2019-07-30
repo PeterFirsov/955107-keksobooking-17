@@ -10,16 +10,20 @@
 
   var types = {
     palace: {
-      ru: 'Дворец', min: 10000
+      ru: 'Дворец',
+      min: 10000
     },
     flat: {
-      ru: 'Квартира', min: 1000
+      ru: 'Квартира',
+      min: 1000
     },
     house: {
-      ru: 'Дом', min: 5000
+      ru: 'Дом',
+      min: 5000
     },
     bungalo: {
-      ru: 'Бунгало', min: 0
+      ru: 'Бунгало',
+      min: 0
     }
   };
 
@@ -68,12 +72,13 @@
   });
 
   fadeForm.addEventListener('submit', function (evt) {
-    window.backend.upload(new FormData(fadeForm), function (response) {
-      fadeForm.reset()
+    window.backend.load(function (response) {
+      fadeForm.reset();
       window.map.disable(true);
-      window.clearPins();
+      window.filter.clearPins();
       window.card.clearPopup();
-    });
+      window.backend.successHandler();
+    }, window.backend.errorHandler, new FormData(fadeForm));
     evt.preventDefault();
   });
 
