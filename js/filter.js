@@ -5,7 +5,7 @@
   var mapPins = map.querySelector('.map__pins');
 
   var clearPins = function () {
-  var offers = mapPins.querySelectorAll('.map__pin:not(.map__pin--main)');
+    var offers = mapPins.querySelectorAll('.map__pin:not(.map__pin--main)');
     offers.forEach(function (offer) {
       offer.remove();
     });
