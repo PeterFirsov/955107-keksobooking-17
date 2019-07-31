@@ -16,9 +16,13 @@
   var fadeForm = form.querySelector('.ad-form');
   var mapFilter = map.querySelector('.map__filters');
   var filterType = mapFilter.querySelector('select[name=housing-type]');
+  var mainPinStart = {
+    x: mapPinMain.style.left,
+    y: mapPinMain.style.top
+  };
 
   filterType.addEventListener('change', function (evt) {
-    window.filterIt(evt);
+    window.filter.filterIt(evt);
   });
 
 
@@ -31,6 +35,13 @@
   var disableForm = function (first) {
     for (var i = 0; i < formFields.length; i++) {
       formFields[i].disabled = first;
+    }
+    if (first === true) {
+      map.classList.add('map--faded');
+      fadeForm.classList.add('ad-form--disabled');
+      setCordinate(pinCordinateLeft + PIN_HALF_WIDTH, pinCordinateTop + PIN_FULL_HEIGHT);
+      mapPinMain.style.left = mainPinStart.x;
+      mapPinMain.style.top = mainPinStart.y;
     }
   };
   disableForm(true);
@@ -88,10 +99,14 @@
   var onMainPinMouseUp = function () {
     activateMap();
     window.pin.renderPins(window.massiv.firstData());
-    mapPinMain.removeEventListener('mouseup', onMainPinMouseUp);
   };
 
   mapPinMain.addEventListener('mouseup', onMainPinMouseUp);
 
+  window.map = {
+    disable: function (answer) {
+      disableForm(answer);
+    }
+  };
 
 })();
