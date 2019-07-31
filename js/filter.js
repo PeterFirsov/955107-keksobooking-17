@@ -54,7 +54,7 @@
     var filterByFeatures = function (item) {
       return filteredOffers.filter(function (offerData) {
         return offerData.offer.features.indexOf(item.value) >= 0;
-      })
+      });
     };
 
     if (selectorFilters.length !== null) {
@@ -83,7 +83,7 @@
 
   window.filter = {
     filterIt: function (offers) {
-      filterIt(offers)
+      filterIt(offers);
     },
     clearPins: clearPins
   };
