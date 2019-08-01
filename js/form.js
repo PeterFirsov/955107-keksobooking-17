@@ -36,6 +36,7 @@
   var formRoom = fadeForm.querySelector('select[name=rooms]');
   var formCapacity = fadeForm.querySelector('select[name=capacity]');
   var capacityOptions = formCapacity.options;
+  var reset = fadeForm.querySelector('.ad-form__reset');
 
   var removeAttribute = function () {
     for (var i = 0; i < capacityOptions.length; i++) {
@@ -69,6 +70,14 @@
 
   formOut.addEventListener('change', function () {
     formIn.value = formOut.value;
+  });
+
+  reset.addEventListener('click', function (evt) {
+    fadeForm.reset();
+    window.map.disable(true);
+    window.filter.clearPins();
+    window.card.clearPopup();
+    evt.preventDefault();
   });
 
   fadeForm.addEventListener('submit', function (evt) {

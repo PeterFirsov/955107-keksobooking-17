@@ -17,6 +17,7 @@
     var image = pinElement.querySelector('img');
 
     pinElement.addEventListener('click', function () {
+      window.card.clearPopup();
       window.card.renderCards(pin);
       image.classList.add('map__pin--active');
     });

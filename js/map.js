@@ -15,16 +15,16 @@
   var cordinateInput = form.querySelector('input[name=address]');
   var fadeForm = form.querySelector('.ad-form');
   var mapFilter = map.querySelector('.map__filters');
-  var filterType = mapFilter.querySelector('select[name=housing-type]');
   var mainPinStart = {
     x: mapPinMain.style.left,
     y: mapPinMain.style.top
   };
 
-  filterType.addEventListener('change', function (evt) {
-    window.filter.filterIt(evt);
+  mapFilter.addEventListener('change', function () {
+    window.filter.clearPins();
+    window.card.clearPopup();
+    window.debounce(window.filter.filterIt(window.massiv.data()));
   });
-
 
   var setCordinate = function (xCord, yCord) {
     var compliteCordinate = xCord + ', ' + yCord;

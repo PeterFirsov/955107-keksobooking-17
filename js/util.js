@@ -10,4 +10,5 @@ window.util = (function () {
       }
     }
   };
+
 })();
