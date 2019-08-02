@@ -51,8 +51,6 @@
       price.classList.add('visually-hidden');
     }
 
-
-
     window.addEventListener('keydown', function (evt) {
       var deleteCard = function () {
         cardMain.remove();

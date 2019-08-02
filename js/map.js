@@ -24,7 +24,7 @@
     window.filter.clearPins();
     window.card.clearPopup();
     window.debounce(function () {
-      window.filter.filterIt(window.massiv.data())
+      window.filter.filterIt(window.massiv.data());
     });
   });
 
