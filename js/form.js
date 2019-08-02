@@ -39,9 +39,9 @@
   var reset = fadeForm.querySelector('.ad-form__reset');
 
   var removeAttribute = function () {
-    for (var i = 0; i < capacityOptions.length; i++) {
-      capacityOptions[i].removeAttribute('disabled');
-    }
+    [].forEach.call(capacityOptions, function (item) {
+      item.disabled = false;
+    });
   };
 
   var attributeChange = function () {

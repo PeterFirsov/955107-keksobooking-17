@@ -1,12 +1,12 @@
 'use strict';
 
 (function () {
-  var map = document.querySelector('.map');
-  var mapPins = map.querySelector('.map__pins');
   var PIN_OFFSET = {
     x: 20,
     y: 40
   };
+  var map = document.querySelector('.map');
+  var mapPins = map.querySelector('.map__pins');
 
   var similarPinElement = document.querySelector('#pin')
     .content
@@ -16,10 +16,15 @@
     var pinElement = similarPinElement.cloneNode(true);
     var image = pinElement.querySelector('img');
 
+
     pinElement.addEventListener('click', function () {
+      var pins = document.querySelectorAll('.map__pin');
+      pins.forEach(function (item) {
+        item.classList.remove('map__pin--active');
+      });
       window.card.clearPopup();
       window.card.renderCards(pin);
-      image.classList.add('map__pin--active');
+      pinElement.classList.add('map__pin--active');
     });
 
     pinElement.style.left = (pin.location.x - PIN_OFFSET.x) + 'px';
