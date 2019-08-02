@@ -41,11 +41,11 @@
     main.appendChild(error);
     var massage = document.querySelector('.error');
     var errorButton = massage.querySelector('.error__button');
-    errorButton.addEventListener('click', function (evt) {
-      window.util.isEscEvent(evt, clearPage);
+    errorButton.addEventListener('click', function () {
+      clearPage();
     });
-    massage.addEventListener('click', function (evt) {
-      window.util.isEscEvent(evt, clearPage);
+    massage.addEventListener('click', function () {
+      clearPage();
     });
     window.addEventListener('keydown', function (evt) {
       window.util.isEscEvent(evt, clearPage);
@@ -60,8 +60,8 @@
     var success = successMassage.cloneNode(true);
     main.appendChild(success);
     var massage = document.querySelector('.success');
-    massage.addEventListener('click', function (evt) {
-      window.util.isEscEvent(evt, clearPage);
+    massage.addEventListener('click', function () {
+      clearPage();
     });
     window.addEventListener('keydown', function (evt) {
       window.util.isEscEvent(evt, clearPage);

@@ -1,13 +1,13 @@
 'use strict';
 
 (function () {
-  var map = document.querySelector('.map');
-  var mapPins = map.querySelector('.map__pins');
-  var mapPinMain = map.querySelector('.map__pin--main');
   var PIN_HALF_WIDTH = 31;
   var PIN_FULL_HEIGHT = 84;
   var MAP_BORDER_TOP = 45;
   var MAP_BORDER_BOTTOM = 73;
+  var map = document.querySelector('.map');
+  var mapPins = map.querySelector('.map__pins');
+  var mapPinMain = map.querySelector('.map__pin--main');
   var pinCordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
   var pinCordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
   var form = document.querySelector('.notice');
@@ -23,7 +23,9 @@
   mapFilter.addEventListener('change', function () {
     window.filter.clearPins();
     window.card.clearPopup();
-    window.debounce(window.filter.filterIt(window.massiv.data()));
+    window.debounce(function () {
+      window.filter.filterIt(window.massiv.data());
+    });
   });
 
   var setCordinate = function (xCord, yCord) {
@@ -36,7 +38,7 @@
     for (var i = 0; i < formFields.length; i++) {
       formFields[i].disabled = first;
     }
-    if (first === true) {
+    if (first) {
       map.classList.add('map--faded');
       fadeForm.classList.add('ad-form--disabled');
       setCordinate(pinCordinateLeft + PIN_HALF_WIDTH, pinCordinateTop + PIN_FULL_HEIGHT);
