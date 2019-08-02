@@ -5,7 +5,7 @@ window.util = (function () {
 
   return {
     isEscEvent: function (evt, action) {
-      if (evt.keyCode === ESC_KEYCODE || evt.target) {
+      if (evt.keyCode === ESC_KEYCODE) {
         action();
       }
     }
