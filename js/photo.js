@@ -50,7 +50,7 @@
   });
 
   var clearPhoto = function () {
-    preview.src = "img/muffin-grey.svg";
+    preview.src = 'img/muffin-grey.svg';
     var photoListOld = document.querySelectorAll('.ad-form__photo');
 
     for (var i = 1; i < photoListOld.length; i++) {
