@@ -77,6 +77,7 @@
     window.map.disable(true);
     window.filter.clearPins();
     window.card.clearPopup();
+    window.photo.clear();
     evt.preventDefault();
   });
 
@@ -87,6 +88,7 @@
       window.filter.clearPins();
       window.card.clearPopup();
       window.backend.successHandler();
+      window.photo.clear();
     }, window.backend.errorHandler, new FormData(fadeForm));
     evt.preventDefault();
   });

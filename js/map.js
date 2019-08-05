@@ -8,8 +8,8 @@
   var map = document.querySelector('.map');
   var mapPins = map.querySelector('.map__pins');
   var mapPinMain = map.querySelector('.map__pin--main');
-  var pinCordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
-  var pinCordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
+  var pinCoordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
+  var pinCoordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
   var form = document.querySelector('.notice');
   var formFields = form.getElementsByTagName('fieldset');
   var cordinateInput = form.querySelector('input[name=address]');
@@ -29,10 +29,9 @@
   });
 
   var setCordinate = function (xCord, yCord) {
-    var compliteCordinate = xCord + ', ' + yCord;
-    cordinateInput.value = compliteCordinate;
+    cordinateInput.value = xCord + ', ' + yCord;
   };
-  setCordinate(pinCordinateLeft + PIN_HALF_WIDTH, pinCordinateTop + PIN_FULL_HEIGHT);
+  setCordinate(pinCoordinateLeft + PIN_HALF_WIDTH, pinCoordinateTop + PIN_FULL_HEIGHT);
 
   var disableForm = function (first) {
     for (var i = 0; i < formFields.length; i++) {
@@ -41,7 +40,7 @@
     if (first) {
       map.classList.add('map--faded');
       fadeForm.classList.add('ad-form--disabled');
-      setCordinate(pinCordinateLeft + PIN_HALF_WIDTH, pinCordinateTop + PIN_FULL_HEIGHT);
+      setCordinate(pinCoordinateLeft + PIN_HALF_WIDTH, pinCoordinateTop + PIN_FULL_HEIGHT);
       mapPinMain.style.left = mainPinStart.x;
       mapPinMain.style.top = mainPinStart.y;
     }

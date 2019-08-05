@@ -16,7 +16,6 @@
     var pinElement = similarPinElement.cloneNode(true);
     var image = pinElement.querySelector('img');
 
-
     pinElement.addEventListener('click', function () {
       var pins = document.querySelectorAll('.map__pin');
       pins.forEach(function (item) {
