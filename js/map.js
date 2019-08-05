@@ -8,8 +8,8 @@
   var map = document.querySelector('.map');
   var mapPins = map.querySelector('.map__pins');
   var mapPinMain = map.querySelector('.map__pin--main');
-  var pinCoordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
-  var pinCoordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
+  var pinCordinateLeft = parseInt(mapPins.querySelector('.map__pin').style.left, 10);
+  var pinCordinateTop = parseInt(mapPins.querySelector('.map__pin').style.top, 10);
   var form = document.querySelector('.notice');
   var formFields = form.getElementsByTagName('fieldset');
   var cordinateInput = form.querySelector('input[name=address]');
